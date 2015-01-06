@@ -12,7 +12,7 @@ class Cartilla {
 
 	//Crear método sellar
 
-	public sellar(boolean s) {
+	public void sellar(boolean s) {
 
 		int i;
 		boolean sello;
@@ -23,20 +23,20 @@ class Cartilla {
 
 	//Crear metodo descuento
 	
-	public descuento(PintxoPote pp) {
+	public void descuento(PintxoPote pp) {
 		
 		double preciodescuento;
-		int contador;
+		int contador=0;
 		int i;
 		for (i=0; i<sellos.length; i++) {
 			if (sellos[i]==true) {
 				contador=contador+1;
 			}
 		if (contador >6 && contador <=8) {
-			preciodescuento=pp.getPrecio()*0,75;
+			preciodescuento=pp.getPrecio()*0.75;
 		}
 		else if (contador>8) {
-			preciodescuento=pp.getPrecio()*0,50;
+			preciodescuento=pp.getPrecio()*0.50;
 		}
 		else {
 			preciodescuento=pp.getPrecio()*1;

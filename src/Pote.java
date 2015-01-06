@@ -34,4 +34,9 @@ class Pote {
 		this.tipo=t;
 	}
 
+	public void mostrarpote() {
+			System.out.println("		Id: 	"+this.getId());
+			System.out.println("		Nombre: "+this.getNombre());
+			System.out.println("		Tipo: 	"+this.getTipo());
+	}
 }

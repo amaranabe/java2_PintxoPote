@@ -1,44 +1,60 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.File;
-import java.io.FileReadear;
-import java.io.BufferReadear;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 
 class Main {
 
-	/*public static mostrarlistados (ArrayList<Pintxos> pp) {
+	public static void mostrarlistados (ArrayList<Pintxo> pp) {
 		int index;
+		System.out.println("El listado de pintxos es el siguiente: ");
 		for (index=0; index<pp.size(); index++ ) {
 			System.out.println("");
+			System.out.println("Pintxo número: " +(index+1));
+			pp.get(index).mostrarpintxo();
 		}
-	}*/
+	}
+
+	public static void mostrarlistadopotes (ArrayList<Pote> ppt) {
+		int index;
+		System.out.println("El listado de bebidas es el siguiente: ");
+		for (index=0; index<ppt.size(); index++ ) {
+			System.out.println();
+			System.out.println("Pote número: "+(index+1));
+			ppt.get(index).mostrarpote();
+		}
+	}
 
 	public static void main(String[] args) {
 		
 		int opcion;
 		Scanner sc=new Scanner(System.in);
-		File f=new File();
-		FileReadear fr=new FileReadear();
-		BufferReadear brr=new BufferReadear();
+
+		ArrayList<Pintxo> listadopintxos=new ArrayList<Pintxo>();
+		ArrayList<Pote> listadopotes=new ArrayList<Pote>();
+		ArrayList<Bar> listadobares=new ArrayList<Bar>();
+		ArrayList<Cliente> listadoclientes=new ArrayList<Cliente>();
 
 		
 		
 		
 		System.out.println("================================================================");
-		System.out.println("		1. Cargar Pintxos (desde fichero Pintxos.txt)"); 
-		System.out.println("		2. Cargar Potes (desde fichero Potes.txt)");
-		System.out.println(" 		3. Cargar Bares (desde fichero Bares.txt)");	
-		System.out.println("		4. Asignar pintxos y potes a cada bar manualmente");
-		System.out.println("		5. PintxoPote");
+		System.out.println("		1. Leer listado de pintxos"); 
+		System.out.println("		2. Leer listado de potes");
+		System.out.println(" 		3. Leer listado de bares");	
+		System.out.println("		4. Crear Clientes");
+		System.out.println("		5. Consumir PintxoPote");
 		System.out.println("		6. Salir");	
 		System.out.println("================================================================");
 		System.out.println();
 		System.out.print("Por favor, marque una de las siguientes opciones: ");
-		opcion=nextInt();
+		
 		
 		do {
-
+			opcion=sc.nextInt();
+			
 			switch (opcion) {
 
 				case 1:
@@ -46,26 +62,34 @@ class Main {
 					try{
 							String lecturapintxos;
 							String[] atributospintxo;
-							Pintxos pin=new Pintxos();
-							ArrayList<Pintxos> listadopintxos=new ArrayList<Pintxos>();
+							String[] listaingredientespintxo;
+
+							listadopintxos.clear();
 
 							File f=new File("Pintxos.txt");
-							FileReadear fr=new FileReadear("f");
-							BufferReadear brr=new BufferReadear("fr");
+							FileReader fr=new FileReader(f);
+							BufferedReader brr=new BufferedReader(fr);
 
 						lecturapintxos=brr.readLine();
 						while(lecturapintxos!=null) {
+								Pintxo pin=new Pintxo();
+
 								atributospintxo=lecturapintxos.split("; ");
 
-								pin.setId(Integer.parseInt.atributospintxo[0]);
+								pin.setId(Integer.parseInt(atributospintxo[0]));
 								pin.setNombre(atributospintxo[1]);
-								pin.setIngredientes(atributospintxo[2]);
-								pin.setTipo(Integer.parseInt.atributospintxo[3]);
+
+								listaingredientespintxo=atributospintxo[2].split(", ");
+								pin.setIngredientes(listaingredientespintxo);
+								
+								pin.setTipo(Integer.parseInt(atributospintxo[3]));
 								listadopintxos.add(pin);
 
 								lecturapintxos=brr.readLine();
 
 						}
+						//Para comprobar que se ha cargado bien el arraylist de pintxo, visualizamos por pantalla con: 
+						mostrarlistados(listadopintxos);
 					}
 
 					catch (Exception e) {
@@ -74,33 +98,34 @@ class Main {
 
 					System.out.println("Proceso realizado.");
 					System.out.print("Por favor, marque la nueva opción que desee: ");
-					opcion=nextInt();
-					break;
+				break;
 
 				case 2:
 					
 					try {
 							String lecturapotes;
 							String[] atributospote;
-							Potes pt=new Potes();
-							ArrayList<Pote> listadopotes=new ArrayList<Pote>();
+
 
 							File f=new File("Potes.txt");
-							FileReadear fr=new FileReadear("f");
-							BufferReadear brr=new BufferReadear("fr");
+							FileReader fr=new FileReader(f);
+							BufferedReader brr=new BufferedReader(fr);
+						listadopotes.clear();
 
 						lecturapotes=brr.readLine();
 						while (lecturapotes!=null) {
+							Pote pt=new Pote();
+
 							atributospote=lecturapotes.split("; ");
 							
-							pt.setId(Double.parseDouble.atributospote[0]);
+							pt.setId(Integer.parseInt(atributospote[0]));
 							pt.setNombre(atributospote[1]);
-							pt.setTipo(Double.parseDouble.atributospote[2]);
+							pt.setTipo(Integer.parseInt(atributospote[2]));
 							listadopotes.add(pt);
 
 							lecturapotes=brr.readLine();
 						}
-
+						mostrarlistadopotes(listadopotes);
 
 					}
 					catch (Exception e) {
@@ -110,32 +135,29 @@ class Main {
 
 					System.out.println("Proceso realizado.");
 					System.out.print("Por favor, marque la nueva opción que desee: ");
-					opcion=nextInt();
 					break;
 
 				case 3:
 					String lecturabares;
 					Bar br=new Bar();
 
+					
 
 
 					System.out.println("Proceso realizado.");
 					System.out.print("Por favor, marque la nueva opción que desee: ");
-					opcion=nextInt();
 					break;
 
 				case 4:
 
 					System.out.println("Proceso realizado.");
 					System.out.print("Por favor, marque la nueva opción que desee: ");
-					opcion=nextInt();
 					break;
 
 				case 5:
 
 					System.out.println("Proceso realizado.");
 					System.out.print("Por favor, marque la nueva opción que desee: ");
-					opcion=nextInt();
 					break;
 
 				case 6:
@@ -144,12 +166,10 @@ class Main {
 
 				default:
 					System.out.println("Esa opción no existe.");
+					System.out.print("Por favor, marque la nueva opción que desee: ");
 				
 			}
-			if(opcion!=6) {
-				System.out.print("Esta opción no existe. Vuelve a elegir otra opción: ");
-			}
-			
+						
 			System.out.println();
 
 		}

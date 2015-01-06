@@ -32,8 +32,10 @@ class Pintxo {
 	public String[] getIngredientes() {
 		return ingredientes;
 	}
-	public void setIngredientes(String[] ing)
-		this.ingredientes=ing;
+	public void setIngredientes(String[] ing) {
+				this.ingredientes=ing;
+	}
+
 
 	public int getTipo() {
 		return tipo;
@@ -41,5 +43,19 @@ class Pintxo {
 
 	public void setTipo(int t) {
 		this.tipo=t;
+	}
+
+	public void mostrarpintxo() {
+			System.out.println("		Id: "+this.getId());
+			System.out.println("		Nombre: "+this.getNombre());
+			System.out.println("		Tipo: "+this.getTipo());
+			System.out.println("		Ingredientes: ");
+			
+			int k;
+			String[] auxiliar;
+			auxiliar =this.getIngredientes();
+			for (k=0;k<auxiliar.length;k++) {
+					System.out.println("			 * "+auxiliar[k]);
+			}
 	}
 }

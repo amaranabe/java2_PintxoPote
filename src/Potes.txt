@@ -1,0 +1,8 @@
+1; Agua; 1
+2; Zurito; 1
+3; Vino del año; 1
+4; Cerveza; 1
+5; Crianza; 2
+6; Rueda; 2
+7; Txakoli; 2
+8; Refresco; 2

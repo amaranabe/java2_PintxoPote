@@ -1,0 +1,6 @@
+1; Tortilla de patatas; huevos, patata, cebolla, pimiento; 1
+2; Foie; foie, cebolla; 2
+3; Txatka; txatka, mayonesa, huevo cocido; 1
+4; Carrillera; carrillera, vino, cebolla, tomate, pimiento; 2
+5; Txipiron a la plancha; txipiron, perejil; 2
+6; Champiñon relleno; champiñones, cebolla, jamon; 1
